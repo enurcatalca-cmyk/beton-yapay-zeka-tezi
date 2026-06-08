@@ -19,6 +19,9 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+st.sidebar.title("Esra Nur Çatalca")
+st.sidebar.markdown("**Danışman:** Prof. Dr. Cengiz Özer")
+st.sidebar.markdown("---")
 sayfa = st.sidebar.radio("📋 Kontrol Paneli", ["📊 Bölüm I: Prediktif Dayanım Analizi", "🧠 Bölüm II: Reolojik & Durabilite Tasarımcısı"])
 
 MODEL1_YOLU = "beton_model.joblib"
