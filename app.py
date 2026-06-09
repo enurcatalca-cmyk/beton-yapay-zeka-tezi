@@ -20,7 +20,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.sidebar.title("Esra Nur Çatalca")
-st.sidebar.markdown("**Danışman:** Prof. Dr. Cengiz Özer")
+st.sidebar.markdown("**Danışman:** Prof. Dr. Cengiz Özel")
 st.sidebar.markdown("---")
 sayfa = st.sidebar.radio("📋 Kontrol Paneli", ["📊 Bölüm I: Prediktif Dayanım Analizi", "🧠 Bölüm II: Reolojik & Durabilite Tasarımcısı"])
 
