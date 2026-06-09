@@ -130,11 +130,24 @@ elif sayfa == "🧠 Bölüm II: Reolojik & Durabilite Tasarımcısı":
                 ax4.legend()
                 st.pyplot(fig4)
 
-            # Reçete Sonuç Tablosu
-            st.subheader("📋 1 m³ Karışım İçin Yapay Zeka Karışım Oranları")
-            recete_df = pd.DataFrame({
-                "TS EN 206 Komponenti": ["CEM I / CEM II Klinker Bağlayıcı", "Efektif Sınıf Suyu ($W_{eff}$)", "Aktif Puzolanik Katkı Mantosu", "Kaba/İnce Agrega Kombinasyonu"],
-                "Hesaplanan Miktar (kg)": [f"{int(tahminler[0])} kg", f"{int(tahminler[1])} kg", f"{int(tahminler[2])} kg", "1250 kg"],
-                "Akademik Durum / Sınıf": ["Kısıtlanmış Hidratasyon Isısı" if s_id==1 else "Sülfata Dayanıklı Modifikasyon" if s_id==2 else "Optimize Edilmiş", "Segment Kalibrasyonlu", "Mikro-Yapı Yoğunlaştırıcı", "Sıkı Paketleme Teorisi ($D_{max}$)"]
-            })
-            st.table(recete_df)
+# Reçete Sonuç Tablosu ve Kartlar
+    st.markdown("---")
+    st.subheader("📊 Yapay Zeka Tahmin Sonuç Özeti")
+
+    col_m1, col_m2, col_m3 = st.columns(3)
+    with col_m1:
+        st.metric(label="Bağlayıcı Miktarı", value=f"{int(tahminler[0])} kg/m³")
+    with col_m2:
+        st.metric(label="Efektif Su Miktarı", value=f"{int(tahminler[1])} kg/m³")
+    with col_m3:
+        st.metric(label="Puzolanik Katkı Miktarı", value=f"{int(tahminler[2])} kg/m³")
+
+    st.markdown("---")
+    st.subheader("📋 1 m³ Karışım İçin Yapay Zeka Karışım Oranları")
+    
+    recete_df = pd.DataFrame({
+        "TS EN 206 Komponenti": ["CEM I / CEM II Klinker Bağlayıcı", "Efektif Sınıf Suyu ($W_{eff}$)", "Aktif Puzolanik Katkı Mantosu", "Kaba/İnce Agrega Matrisi"],
+        "Hesaplanan Miktar (kg/m³)": [f"{int(tahminler[0])} kg/m³", f"{int(tahminler[1])} kg/m³", f"{int(tahminler[2])} kg/m³", "1250 kg/m³"],
+        "Akademik Durum / Sınıf": ["Kısıtlanmış Hidratasyon Isısı" if s_id==1 else "Sülfata Dayanıklı Modifikasyon" if s_id==2 else "Optimize Edilmiş Matris", "TS EN 206 Sınır Değer Uyumlu", "Aktivite İndeksi Optimize", "Gradasyon Kararlılığı Sağlandı"]
+    })
+    st.table(recete_df)
