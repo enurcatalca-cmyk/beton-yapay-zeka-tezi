@@ -1,4 +1,6 @@
 import streamlit as st
+import qrcode
+from io import BytesIO
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,6 +24,20 @@ st.markdown("""
 st.sidebar.title("Esra Nur Çatalca")
 st.sidebar.markdown("**Danışman:** Prof. Dr. Cengiz Özel")
 st.sidebar.markdown("---")
+
+# Karekod Oluşturma Alanı
+site_linki = "https://tasarim-yazilimi.streamlit.app"  # Sitenin canlı linkini buraya yazabilirsin
+
+qr = qrcode.QRCode(version=1, box_size=10, border=4)
+qr.add_data(site_linki)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+
+buf = BytesIO()
+img.save(buf, format="PNG")
+byte_im = buf.getvalue()
+
+st.sidebar.image(byte_im, caption="Yazılımı Telefonunda Test Et!", use_container_width=True)
 sayfa = st.sidebar.radio("📋 Kontrol Paneli", ["📊 Bölüm I: Prediktif Dayanım Analizi", "🧠 Bölüm II: Reolojik & Durabilite Tasarımcısı"])
 
 MODEL1_YOLU = "beton_model.joblib"
