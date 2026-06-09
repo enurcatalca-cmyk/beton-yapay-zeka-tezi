@@ -26,7 +26,7 @@ st.sidebar.markdown("**Danışman:** Prof. Dr. Cengiz Özel")
 st.sidebar.markdown("---")
 
 # Karekod Oluşturma Alanı
-site_linki = "https://tasarim-yazilimi.streamlit.app"  # Sitenin canlı linkini buraya yazabilirsin
+site_linki = "https://beton-yapay-zeka-lab.streamlit.app/"
 
 qr = qrcode.QRCode(version=1, box_size=10, border=4)
 qr.add_data(site_linki)
